@@ -30,7 +30,7 @@
         <li><a href="./select/index.php">L2 - 判斷式</a></li>
         <li><a href="./loop/index.php">L2 - 迴圈</a></li>
         <li><a href="./array/index.php">L3 - 陣列</a></li>
-        <li><a href="./loop/stars.php">L2練習 - 畫星星</a></li>
+        <li><a href="./loop/stars.php">L2練習 - 畫星星 / 尋找字元</a></li>
     </ul>
 </body>
 </html>

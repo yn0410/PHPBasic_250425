@@ -351,7 +351,114 @@
             echo "<br>";
         }
     ?>
-    
+
+
+
+    <hr>
+    <h2>尋找字元</h2>
+    <p>(老師教的)</p>
+    <?php
+        $string="This is a good day";
+        $target="a";
+        echo "字串=".$string."<br>";
+        echo "目標字元=".$target."<br>";
+        echo "字串長度=".strlen($string)."<br>";
+
+        $is_find=0; //is_find預設為false=0
+        $counter=0;
+
+        while($is_find==0 && $counter<strlen($string)){ // &&找完字串 沒找到就跳出迴圈
+            if($string[$counter] == $target){
+                $is_find=1;
+            }
+            // echo $is_find;
+            // echo ",";
+            // echo $counter;
+            $counter++;
+            // echo ",";
+            // echo $counter;
+            // echo "<br>";
+        }
+        if($is_find){
+            echo "目標字元".$target."在字串的第".$counter."個位置";
+        }else{
+            echo "字串中沒有你要找的".$target;
+        }
+    ?>
+
+<h2>尋找字元 - 中文字</h2>
+    <p>(老師教的)</p>
+    <?php
+        $string="今天真是個出遊的好日子啊~";//一個字 =3 byte
+        $target="個";
+        echo "字串=".$string."<br>";
+        echo "目標字元=".$target."<br>";
+        echo "字串長度=".mb_strlen($string)."<br>"; //multibyte string
+
+        $is_find=0; //is_find預設為false=0 >找到的話=1
+        $counter=0;
+
+        while($is_find==0 && $counter<mb_strlen($string)){ // &&找完字串 沒找到就跳出迴圈
+            // echo mb_substr($string,$counter,1);
+            // echo "-<br>";
+            if(mb_substr($string,$counter,1) == $target){
+                $is_find=1;
+            }
+            // echo $is_find;
+            // echo ",";
+            // echo $counter;
+            $counter++;
+            // echo ",";
+            // echo $counter;
+            // echo "<br>";
+        }
+        if($is_find){
+            echo "目標字元".$target."在字串的第".$counter."個位置";
+        }else{
+            echo "字串中沒有你要找的'".$target."'";
+        }
+    ?>
+
+    <h2>尋找字元 - 中文詞</h2> 
+    <!-- 英文詞也能用 -->
+    <p>(老師教的)</p>
+    <?php
+        $string="今天真是個出遊的好日子啊~";//一個字 =3 byte
+        $target="出遊";
+        echo "字串=".$string."<br>";
+        echo "目標字元=".$target."<br>";
+        echo "字串長度=".mb_strlen($string)."<br>"; //multibyte string
+
+        $is_find=0; //is_find預設為false=0 >找到的話=1
+        $counter=0;
+
+        while($is_find==0 && $counter<mb_strlen($string)){ // &&找完字串 沒找到就跳出迴圈
+            // echo mb_substr($string,$counter,1);
+            // echo "-<br>";
+            if(mb_substr($string,$counter,mb_strlen($target)) == $target){
+                $is_find=1;
+            }
+            // echo $is_find;
+            // echo ",";
+            // echo $counter;
+            echo mb_substr($string,$counter,mb_strlen($target));
+            $counter++;
+            // echo ",";
+            // echo $counter;
+            echo "<br>";
+        }
+        if($is_find){
+            echo "目標字元".$target."在字串的第".$counter."個位置";
+        }else{
+            echo "字串中沒有你要找的'".$target."'";
+        }
+    ?>
+
+    <hr>
+    <!-- <p>(老師教的)</p> -->
+    <?php //mb_strpos() 此function功能 =上面的"尋找字元 - 中文詞"
+        echo mb_strpos($string, $target);
+    ?>
     
 
 
