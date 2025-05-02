@@ -209,6 +209,34 @@
                 echo "<tr>";
                     echo "<td>". $j."</td>";
                 for($i=1;$i<=9;$i++){
+                    echo "<td>". ($i*$j)."</td>";
+                }
+                echo "</tr>";
+            }
+        ?>
+    </table>
+    
+
+    <h2>九九乘法表 交叉呈現 - 類票價表-1</h2>
+    <p>我自己想的</p>
+    <table border = 1>
+        <tr>
+            <td></td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+        <?php
+            for($j=1;$j<=9;$j++){
+                echo "<tr>";
+                    echo "<td>". $j."</td>";
+                for($i=1;$i<=9;$i++){
                     if($i+$j<=10){
                         echo "<td>". ($i*$j)."</td>";
                     }
@@ -217,7 +245,97 @@
             }
         ?>
     </table>
-    
+
+
+    <h2>九九乘法表 交叉呈現 - 類票價表-2</h2>
+    <p>我自己想的 也是老師寫法-1</p>
+    <table border = 1>
+        <tr>
+            <td></td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+        <?php
+            for($j=1;$j<=9;$j++){
+                echo "<tr>";
+                    echo "<td>". $j."</td>";
+                for($i=1;$i<=9;$i++){
+                    if($i<=$j){
+                        echo "<td>". ($i*$j)."</td>";
+                    }
+                }
+                echo "</tr>";
+            }
+        ?>
+    </table>
+
+    <h2>九九乘法表 交叉呈現 - 類票價表-3</h2>
+    <p>我自己想的 也是老師寫法-2/但數值很奇怪 他沒注意到/我改了是下一個表格</p>
+    <table border = 1>
+        <tr>
+            <td></td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+        <?php
+            for($j=1;$j<=9;$j++){
+                echo "<tr>";
+                    echo "<td>". $j."</td>";
+                for($i=1;$i<=9;$i++){
+                    if($i>=$j){
+                        echo "<td>". ($i*$j)."</td>";
+                    }
+                }
+                echo "</tr>";
+            }
+        ?>
+    </table>
+
+    <h2>九九乘法表 交叉呈現 - 類票價表-4</h2>
+    <p>我自己想的</p>
+    <!-- 右上方顯示 -->
+    <table border = 1>
+        <tr>
+            <td></td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+        <?php
+            for($j=1;$j<=9;$j++){
+                echo "<tr>";
+                    echo "<td>". $j."</td>";
+                for($i=1;$i<=9;$i++){
+                    if($i>=$j){
+                        echo "<td>". ($i*$j)."</td>";
+                    }else{
+                        echo "<td> </td>";
+                    }
+                }
+                echo "</tr>";
+            }
+        ?>
+    </table>
 
 
     <p>&nbsp;</p>

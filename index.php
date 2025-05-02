@@ -11,7 +11,7 @@
             justify-content:center;
             flex-wrap:wrap;
             width:70%;
-            padding:0 5%;
+            margin:auto;
         }
         li{
             min-width: 100px;
@@ -19,7 +19,8 @@
             border: 1px solid brown;
             border-radius:15px;
             box-shadow:1px 1px 5px #eee;
-            margin:1%
+            margin:1%;
+            text-align:center;
         }
     </style>
 </head>
@@ -29,7 +30,7 @@
         <li><a href="./select/index.php">判斷式</a></li>
         <li><a href="./loop/index.php">迴圈</a></li>
         <li><a href="./array/index.php">陣列</a></li>
-        <li><a href="./array/index.php">字串</a></li>
+        <li><a href="./loop/stars.php">畫星星</a></li>
     </ul>
 </body>
 </html>
