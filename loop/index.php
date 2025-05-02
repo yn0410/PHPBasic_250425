@@ -209,7 +209,9 @@
                 echo "<tr>";
                     echo "<td>". $j."</td>";
                 for($i=1;$i<=9;$i++){
-                    echo "<td>". ($i*$j)."</td>";
+                    if($i+$j<=10){
+                        echo "<td>". ($i*$j)."</td>";
+                    }
                 }
                 echo "</tr>";
             }
