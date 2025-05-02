@@ -26,11 +26,11 @@
 </head>
 <body>
     <ul>
-        <li><a href="var.php">變數</a></li>
-        <li><a href="./select/index.php">判斷式</a></li>
-        <li><a href="./loop/index.php">迴圈</a></li>
-        <li><a href="./array/index.php">陣列</a></li>
-        <li><a href="./loop/stars.php">畫星星</a></li>
+        <li><a href="var.php">L1 - 變數</a></li>
+        <li><a href="./select/index.php">L2 - 判斷式</a></li>
+        <li><a href="./loop/index.php">L2 - 迴圈</a></li>
+        <li><a href="./array/index.php">L3 - 陣列</a></li>
+        <li><a href="./loop/stars.php">L2練習 - 畫星星</a></li>
     </ul>
 </body>
 </html>
