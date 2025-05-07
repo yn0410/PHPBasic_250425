@@ -183,7 +183,7 @@
         }
         echo "<br>";
         echo "<br>";
-        
+
 
         //老師code-3
         //更精簡的程式碼 >用到 array_pop() & array_shift() & shuffle() >陣列會變短
@@ -200,6 +200,60 @@
         foreach($lotto as $value){
             echo $value . " ";
         }
+    ?>
+
+    <hr>
+    <h2>練習-4 找出五百年內的閏年</h2>
+    <ul>
+        <li>請依照閏年公式找出五百年內的閏年</li>
+        <li>使用陣列來儲存閏年</li>
+        <li>使用迴圈來印出閏年</li>
+    </ul>
+    <?php
+        //老師code-1
+        $year=[];
+
+        for($i=2025; $i<=2525; $i++){
+            if($i%4==0 && ($i%100!=0) || ($i%400==0)){
+                $year[]=$i;
+            }
+        }
+
+        foreach($year as $value){
+            echo $value . ", ";
+        }
+        echo "<br>";
+
+        $theyear=2400;
+        if(in_array($theyear, $year)){
+            echo $theyear . "是閏年";
+        }else{
+            echo $theyear . "不是閏年";
+        }
+
+
+        //老師code-2
+        $year2=[];
+        for($i=2025; $i<=2525; $i++){
+            if($i%4==0 && ($i%100!=0) || ($i%400==0)){
+                $year2[$i]=true;
+            }else{
+                $year2[$i]=false;
+            }
+        }
+        echo "<br>";
+        
+        $ty=2100;
+        //老師code-2-1 用if else
+        /*if($year2[$ty]){
+            echo $ty . "是閏年";
+        }else{
+            echo $ty . "不是閏年";
+        }
+        echo "<br>";*/
+
+        //老師code-2-2 用三元運算子
+        echo $ty . ($year2[$ty]?"是閏年":"不是閏年") . "<br>";
     ?>
 
 
