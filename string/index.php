@@ -170,6 +170,28 @@
     echo $str52;
     echo "<br>";
 
+    // 延伸：在多個指定關鍵字中 加上多個url連結
+    // 複製老師code
+
+
+    // 延伸：使用多維陣列
+    /*$keywords = [
+        ["關鍵字", "style", "連結"],
+        ["關鍵字", "style", "連結"],
+        ["關鍵字", "style", "連結"]
+    ];*/
+    /*$keywords = [
+        ['content' => "關鍵字",
+        'style' => "font-size: 20px; color: blue;",
+        'url' => "https://..."],
+        ['content' => "關鍵字",
+        'style' => "font-size: 20px; color: blue;",
+        'url' => "https://..."],
+        ['content' => "關鍵字",
+        'style' => "font-size: 20px; color: blue;",
+        'url' => "https://..."],
+    ];*/
+
 
     ?>
 
