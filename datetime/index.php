@@ -79,6 +79,27 @@
     <hr>
     <h2>練習-2 計算距離自己下一次生日還有幾天</h2>
     <?php
+    //老師code
+    $birthday = "2001-04-10"; // 設定自己的生日
+    $birthday_array=explode("-",$birthday); // 將生日字串轉換為陣列
+    $birthday_array[0]=date("Y"); // 將生日的年份改為當前年份
+
+    $nextBirthday = join("-",$birthday_array); // 將陣列轉換為字串
+
+    $today=strtotime(date("Y-m-d")); // 取得當前的時間戳記
+    //echo "今天的時間戳記：$today<br>";
+    $birthday_timestamp=strtotime($nextBirthday); // 將生日字串轉換為時間戳記
+    //echo "生日的時間戳記：$birthday_timestamp<br>";
+
+    if($today>$birthday_timestamp){ //表示今年生日過了
+        $birthday_timestamp=strtotime("+1 year",$birthday_timestamp); // 將生日時間戳記+1年
+    }
+
+    $birthday_diff=$birthday_timestamp-$today; // 計算兩個時間戳記的差值
+    $days=($birthday_diff/(60*60*24)); // 將差值轉換為天數
+
+    echo "我的出生日是：$birthday<br>";
+    echo "距離自己下一次生日還有 $days 天";
 
     echo "<br>";
     ?>
