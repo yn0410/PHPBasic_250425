@@ -32,6 +32,7 @@
         <li><a href="./loop/stars.php">L2流程控制 - 練習 - 畫星星 / 尋找字元</a></li>
         <li><a href="./array/index.php">L3陣列 - 練習 - 學生成績陣列</a></li>
         <li><a href="./string/index.php">L4字串 - 練習x5 </a></li>
+        <li><a href="./datetime/index.php">L5 時間及日期 - 練習 </a></li>
     </ul>
 </body>
 </html>
