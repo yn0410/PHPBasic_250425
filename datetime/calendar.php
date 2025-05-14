@@ -51,6 +51,30 @@
             height: 40px;
         }
 
+        /* 老師code start */
+        .box,.th-box{
+            width:50px;
+            height:50px;
+            background-color:lightblue;
+            display:inline-block;
+            border:1px solid blue;
+            box-sizing:border-box;
+            margin-left:-1px;
+            margin-top:-1px;
+        }
+        .box-container{
+            width:350px;
+            margin:0 auto;
+            box-sizing:border-box;
+            padding-left:1px;    
+            padding-top:1px;    
+        }
+        .th-box{
+            height:25px;
+            text-align:center;
+        }
+        /* 老師code end */
+
 
     </style>
 </head>
@@ -59,7 +83,7 @@
     <?php
     $today = date("Y-m-d");
     $firstDay = date("Y-m-01");
-    $fistDayWeek = date("w", strtotime($firstDay)); //此月第一天是星期幾 >0（星期天）到 6（星期六）
+    $firstDayWeek = date("w", strtotime($firstDay)); //此月第一天是星期幾 >0（星期天）到 6（星期六）
     $theDaysOfMonth = date("t", strtotime($firstDay)); // 此月有幾天
 
     $spDate = [ //special date
@@ -68,6 +92,43 @@
         '2025-05-30'=>'端午節'
     ]; 
 
+    // 以block box製作的日曆 start - 老師code
+    $monthDays = [];
+
+//填入空白日期
+for($i=0;$i<$firstDayWeek;$i++){
+    $monthDays[]="&nbsp;";
+}
+
+//填入當日日期
+for($i=0;$i<$theDaysOfMonth;$i++){
+        $timestamp = strtotime(" $i days", strtotime($firstDay));
+        $date=date("d", $timestamp);
+        $monthDays[]=$date;
+}
+
+
+//建立外框及標題
+echo "<div class='box-container'>";
+     
+echo "<div class='th-box'>日</div>";
+echo "<div class='th-box'>一</div>";
+echo "<div class='th-box'>二</div>";
+echo "<div class='th-box'>三</div>";
+echo "<div class='th-box'>四</div>";
+echo "<div class='th-box'>五</div>";
+echo "<div class='th-box'>六</div>";
+     
+
+//使用foreach迴圈,印出日期
+foreach($monthDays as $day){
+ 
+    echo "<div class='box'>";
+    echo $day;
+    echo "</div>";
+}
+echo "</div>";
+    // 以block box製作的日曆 end
     ?>
 
     <h2 style="text-align: center;"><?=date("Y 年 m 月");?></h2>
@@ -86,7 +147,7 @@
         echo "<tr>";
 
         for($j=0; $j<7; $j++){
-            $day = $j+($i*7) - $fistDayWeek; //格子是此月的幾號
+            $day = $j+($i*7) - $firstDayWeek; //格子是此月的幾號
             // $d = date("Y-m-$day"); //???
             $timestamp = strtotime("$day days", strtotime($firstDay));
             $date=date("Y-m-d", $timestamp);
