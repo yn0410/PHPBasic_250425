@@ -48,13 +48,19 @@
         echo "<tr>";
 
         for($j=0; $j<7; $j++){
-            echo "<td>";
-            $day = $j+1+($i*7) - $fistDayWeek;
+            $day = $j+1+($i*7) - $fistDayWeek; //格子是此月的幾號
+            // $d = date("Y-m-$day"); //???
+            $date = date("Y-m-d", strtotime("$day days", strtotime($firstDay)));
+
+            /*echo "<td>";
             if($day>0 && $day<=$theDaysOfMonth){
                 echo $day;
             }
-            
+            echo "</td>";*/
+            echo "<td>";
+            echo $date;
             echo "</td>";
+
         }
 
         echo "</tr>";
