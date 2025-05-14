@@ -21,6 +21,20 @@
             text-align: center;
             padding: 5px 10px;
         }
+        .today{
+            background-color: yellow;
+            font-weight: bold;
+        }
+        .other-month{
+            background-color:gray;
+            color:#aaa;
+        }
+        .holiday{
+            background-color:pink;
+            color:white;
+        }
+        
+
 
     </style>
 </head>
@@ -33,6 +47,7 @@
     $theDaysOfMonth = date("t", strtotime($firstDay)); // 此月有幾天
     ?>
 
+    <h2 style="text-align: center;"><?=date("Y 年 m 月");?></h2>
     <table>
         <tr>
             <td>日</td>
@@ -48,18 +63,35 @@
         echo "<tr>";
 
         for($j=0; $j<7; $j++){
-            $day = $j+1+($i*7) - $fistDayWeek; //格子是此月的幾號
+            $day = $j+($i*7) - $fistDayWeek; //格子是此月的幾號
             // $d = date("Y-m-$day"); //???
-            $date = date("Y-m-d", strtotime("$day days", strtotime($firstDay)));
+            $timestamp = strtotime("$day days", strtotime($firstDay));
+            $date=date("Y-m-d", $timestamp);
+            $class="";
 
             /*echo "<td>";
             if($day>0 && $day<=$theDaysOfMonth){
                 echo $day;
             }
             echo "</td>";*/
-            echo "<td>";
+            /*echo "<td>";
             echo $date;
+            echo "</td>";*/
+
+            if(date("N",$timestamp)>5){
+                $class=$class . " holiday";
+            }
+
+            if($today==$date){
+                $class=$class . " today";
+            }else if(date("m",$timestamp)!=date("m",strtotime($firstDay))){
+                $class=$class ." other-month";
+            }
+
+            echo "<td class='$class' data-date='$date'>";
+                echo date("d",$timestamp);
             echo "</td>";
+
 
         }
 
