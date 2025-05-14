@@ -73,6 +73,7 @@
             height:25px;
             text-align:center;
         }
+        /* +++... */
         /* 老師code end */
 
 
@@ -93,6 +94,7 @@
     ]; 
 
     // 以block box製作的日曆 start - 老師code
+    //+++...
     $monthDays = [];
 
 //填入空白日期
