@@ -33,7 +33,16 @@
             background-color:pink;
             color:white;
         }
-        
+        tr:not(tr:nth-child(1)) td:hover{ /* 第一列不需要此效果 */
+            background-color:lightblue;
+            cursor:pointer;
+            font-size:16px;
+            font-weight:bold;
+        }
+        .pass-date{ /* 以過去的日子 的效果 */
+            /* background-color:lightgray; */
+            color:#aaa;
+        }
 
 
     </style>
@@ -86,6 +95,10 @@
                 $class=$class . " today";
             }else if(date("m",$timestamp)!=date("m",strtotime($firstDay))){
                 $class=$class ." other-month";
+            }
+
+            if($timestamp<strtotime($today)){
+                $class=$class . " pass-date";
             }
 
             echo "<td class='$class' data-date='$date'>";
