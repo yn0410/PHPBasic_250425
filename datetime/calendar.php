@@ -43,6 +43,13 @@
             /* background-color:lightgray; */
             color:#aaa;
         }
+        .date-num{
+            font-size: 14px;
+            text-align: left;
+        }
+        .date-event{
+            height: 40px;
+        }
 
 
     </style>
@@ -54,6 +61,13 @@
     $firstDay = date("Y-m-01");
     $fistDayWeek = date("w", strtotime($firstDay)); //此月第一天是星期幾 >0（星期天）到 6（星期六）
     $theDaysOfMonth = date("t", strtotime($firstDay)); // 此月有幾天
+
+    $spDate = [ //special date
+        '2025-05-11'=>'母親節',
+        '2025-05-01'=>'勞動節',
+        '2025-05-30'=>'端午節'
+    ]; 
+
     ?>
 
     <h2 style="text-align: center;"><?=date("Y 年 m 月");?></h2>
@@ -102,7 +116,15 @@
             }
 
             echo "<td class='$class' data-date='$date'>";
-                echo date("d",$timestamp);
+                echo "<div class='date-num'>";
+                    echo date("d",$timestamp);
+                echo "</div>";
+
+                echo "<div class='date-event'>";
+                    if(isset($spDate[$date])){
+                        echo $spDate[$date];
+                    }
+                echo "</div>";
             echo "</td>";
 
 
