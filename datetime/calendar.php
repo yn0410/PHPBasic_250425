@@ -8,8 +8,8 @@
         h1{
             color: blue;
             text-align: center;
-            border-bottom: 1px solid black;
-            padding-bottom: 10px;
+            /* border-bottom: 1px solid black;
+            padding-bottom: 10px; */
         }
         table{
             width: 60%;
