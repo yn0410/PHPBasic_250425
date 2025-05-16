@@ -12,9 +12,9 @@
             padding-bottom: 10px;
         }
         table{
-            width: 50%;
+            width: 60%;
             border-collapse: collapse;
-            margin: auto;
+            margin:0 auto;
         }
         table, tr, td{
             border: 1px solid brown;
@@ -32,6 +32,7 @@
         .holiday{
             background-color:pink;
             color:white;
+            font-size:12px;
         }
         tr:not(tr:nth-child(1)) td:hover{ /* 第一列不需要此效果 */
             background-color:lightblue;
@@ -53,17 +54,18 @@
 
         /* 老師code start */
         .box,.th-box{
-            width:50px;
-            height:50px;
+            width:60px;
+            height:80px;
             background-color:lightblue;
             display:inline-block;
             border:1px solid blue;
             box-sizing:border-box;
             margin-left:-1px;
             margin-top:-1px;
+            vertical-align:top;
         }
         .box-container{
-            width:350px;
+            width:420px;
             margin:0 auto;
             box-sizing:border-box;
             padding-left:1px;    
@@ -73,7 +75,20 @@
             height:25px;
             text-align:center;
         }
-        /* +++... */
+        .day-num,.day-week{
+            display:inline-block;
+            width:50%;
+
+        }
+        .day-num{
+            color:#999;
+            font-size:14px;
+        }
+        .day-week{
+            color:#aaa;
+            font-size:12px;
+            text-align:right;
+        }
         /* 老師code end */
 
 
@@ -82,32 +97,62 @@
 <body>
     <h1>線上日曆</h1>
     <?php
-    $today = date("Y-m-d");
-    $firstDay = date("Y-m-01");
+    $month=5;
+    $today = date("Y-$month-d");
+    $firstDay = date("Y-$month-01");
     $firstDayWeek = date("w", strtotime($firstDay)); //此月第一天是星期幾 >0（星期天）到 6（星期六）
     $theDaysOfMonth = date("t", strtotime($firstDay)); // 此月有幾天
 
     $spDate = [ //special date
+        '2025-04-04'=>'兒童節',
+        '2025-04-05'=>'清明節',
         '2025-05-11'=>'母親節',
         '2025-05-01'=>'勞動節',
-        '2025-05-30'=>'端午節'
-    ]; 
+        '2025-05-30'=>'端午節',
+        '2025-06-06'=>"生日"
+    ];
 
-    // 以block box製作的日曆 start - 老師code
-    //+++...
+    // 以block box製作的日曆 start - 老師code(老師第126行)
+   $todoList=[ '2025-05-01'=>'開會'];
+
     $monthDays = [];
 
 //填入空白日期
 for($i=0;$i<$firstDayWeek;$i++){
-    $monthDays[]="&nbsp;";
+    $monthDays[]=[];
 }
 
 //填入當日日期
 for($i=0;$i<$theDaysOfMonth;$i++){
         $timestamp = strtotime(" $i days", strtotime($firstDay));
         $date=date("d", $timestamp);
-        $monthDays[]=$date;
+        $holiday="";
+        foreach($spDate as $d=>$value){
+            if($d==date("Y-m-d", $timestamp)){
+                $holiday=$value;
+            }
+        }
+        $todo='';
+        foreach($todoList as $d=>$value){
+            if($d==date("Y-m-d", $timestamp)){
+                $todo=$value;
+            }
+        }
+        $monthDays[]=[
+            "day"=>date("d", $timestamp),
+            "fullDate"=>date("Y-m-d", $timestamp),
+            "weekOfYear"=>date("W", $timestamp),
+            "week"=>date("w", $timestamp),
+            "daysOfYear"=>date("z", $timestamp),
+            "workday"=>date("N", $timestamp)<6?true:false,
+            "holiday"=>$holiday,
+            "todo"=>$todo
+        ];
 }
+
+/* echo "<pre>";
+print_r($monthDays);
+echo "</pre>"; */
 
 
 //建立外框及標題
@@ -126,11 +171,50 @@ echo "<div class='th-box'>六</div>";
 foreach($monthDays as $day){
  
     echo "<div class='box'>";
-    echo $day;
+    echo "<div class='day-info'>";
+        echo "<div class='day-num'>";
+        if(isset($day['day'])){
+
+            echo $day["day"];
+        }else{
+            echo "&nbsp;";
+        }
+        echo "</div>";
+        echo "<div class='day-week'>";
+        if(isset($day['weekOfYear'])){
+            echo $day["weekOfYear"];
+        }else{
+            echo "&nbsp;";
+        }
+
+        echo "</div>";
+    echo "</div>";
+
+
+    echo "<div class='holiday-info'>";
+    if(isset($day['holiday'])){
+        echo "<div class='holiday'>";
+        echo $day['holiday'];
+        echo "</div>";
+    }else{
+        echo "&nbsp;";
+    }
+    echo "</div>";
+    echo "<div class='todo-info'>";
+    if(isset($day['todo']) && !empty($day['todo'])){
+        
+            echo "<div class='todo'>";
+            echo $day['todo'];
+            echo "</div>";
+        
+    }else{
+        echo "&nbsp;";
+    }
+    echo "</div>";
     echo "</div>";
 }
 echo "</div>";
-    // 以block box製作的日曆 end
+    // 以block box製作的日曆 end (老師第227+1行)
     ?>
 
     <h2 style="text-align: center;"><?=date("Y 年 m 月");?></h2>
